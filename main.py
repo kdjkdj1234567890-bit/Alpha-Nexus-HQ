@@ -32,9 +32,11 @@ def run_intelligence():
         response = requests.post(api_url, headers={'Content-Type': 'application/json'}, data=json.dumps(payload))
         strategy = response.json()['candidates'][0]['content']['parts'][0]['text']
         
-        # 텔레그램 전송
+        # 텔레그램 전송 (이 부분이 완성되었습니다)
         report = f"🏆 [Alpha-Nexus HQ 무인 보고]\n\n{strategy}\n\n🔗 {news_data}"
-        requests.get(f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage?chat_id={CHAT_ID}&text={report}")
+        telegram_url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
+        requests.post(telegram_url, data={"chat_id": CHAT_ID, "text": report})
+        
         print("✅ 보고 완료!")
     except Exception as e:
         print(f"❌ 오류 발생: {e}")
