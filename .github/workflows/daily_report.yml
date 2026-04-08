@@ -4,7 +4,7 @@ on:
   schedule:
     # 매일 아침 9시(한국 시간) 자동 실행 (UTC 00:00)
     - cron: '0 0 * * *'
-  workflow_dispatch: # <- 이 줄의 들여쓰기를 schedule과 맞췄습니다.
+  workflow_dispatch: # 직접 '실행' 버튼을 누를 수 있게 해줍니다
 
 jobs:
   build:
